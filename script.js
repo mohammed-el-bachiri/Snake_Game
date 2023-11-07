@@ -1,14 +1,34 @@
 let snake = document.querySelector('#snake');
 let btns = document.querySelectorAll('div#btns p');
-let left = document.querySelectorAll('#left');
 let position = 0;
+let clickedBtn = null;
 
-setInterval(() => {
-    if (position > 268) {
-        position = 0;
+btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        clickedBtn = btn.id;
+
+        setInterval(() => {
+            switch (clickedBtn) {
+                case 'right':
+                    clickedBtn !== '' ? move('marginLeft', 10) : clickedBtn = '';
+                
+                  break;
+                case 'left':
+                   move('marginLeft', -10);
+                   
+                  break;
+            }
+            
+        }, 500);
+    });
+});
+
+function move(index, speed) {
+    if ( position > 260 || position < 0 ){
+        position = 0; 
+        clickedBtn = null;
     } else {
-        position += 5.19;
+        position += speed;
     }
-    left.addev
-    snake.style.top = `${position}px`
-}, 200);
+    snake.style[index] = `${position}px`;
+}
