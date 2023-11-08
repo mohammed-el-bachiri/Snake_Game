@@ -34,7 +34,7 @@ setInterval(() => {
 function move(index, speed) {
     if ( position > 260 || position < 0 ){
         position = 0; 
-        clickedBtn = null;
+        clickedBtn = '';
     } else {
         position += speed;
     }
